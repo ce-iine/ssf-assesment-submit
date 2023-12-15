@@ -84,7 +84,6 @@ public class DatabaseService {
             return canPurchase;
         }
         return !canPurchase;
-
     }
 
     public Event addParticipant(Integer ticketsPurchased, Long index) throws JsonMappingException, JsonProcessingException{

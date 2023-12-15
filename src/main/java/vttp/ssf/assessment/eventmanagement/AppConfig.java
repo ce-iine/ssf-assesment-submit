@@ -43,7 +43,7 @@ public class AppConfig {
         config.setPort(redisPort);
         config.setDatabase(redisDatabase);
 
-        if (!"NOT_SET".equals(redisUser.trim())) {
+        if (redisUser.trim().length() > 0) {
             config.setUsername(redisUser);
             config.setPassword(redisPassword);
         }
