@@ -87,8 +87,8 @@ public class DatabaseService {
 
     }
 
-    public void addParticipant(Integer ticketsPurchased, Integer index){
-        redisRepo.updateParticipantCount();
+    public Event addParticipant(Integer ticketsPurchased, Long index) throws JsonMappingException, JsonProcessingException{
+        return redisRepo.updateParticipantCount(ticketsPurchased, index);
     }
 
 

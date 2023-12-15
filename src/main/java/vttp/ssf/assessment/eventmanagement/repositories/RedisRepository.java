@@ -56,8 +56,14 @@ public class RedisRepository {
         return allEvents;
     }
 
-	public void updateParticipantCount(){
+	public Event updateParticipantCount(Integer ticketsPurchased, Long index) throws JsonMappingException, JsonProcessingException{
+		Event updateEvent = getEvent(index);
+		int currCount = updateEvent.getParticipants();
+		currCount += ticketsPurchased;
+		updateEvent.setParticipants(currCount);
 
+		//update in redis
+		return updateEvent;
 	}
 
 

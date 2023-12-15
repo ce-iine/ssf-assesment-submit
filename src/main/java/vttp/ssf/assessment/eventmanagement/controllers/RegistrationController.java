@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import vttp.ssf.assessment.eventmanagement.models.Participant;
@@ -41,7 +44,8 @@ public class RegistrationController {
     // TODO: Task 7
     @PostMapping("/registration/register")
     public String processRegistration(@Valid @ModelAttribute("participant") Participant form, BindingResult result,
-            HttpSession session, Model model) {
+            HttpSession session, Model model)
+            throws JsonMappingException, JsonProcessingException, NumberFormatException {
 
         Event event = (Event) session.getAttribute("event");
 
@@ -57,7 +61,8 @@ public class RegistrationController {
         }
 
         Integer ticketsPurchased = form.getNumOfTix();
-        databaseSvc.addParticipant(ticketsPurchased, event.getEventId());
+        //set event to updated event retrieved after updating participant count 
+        databaseSvc.addParticipant(ticketsPurchased, Long.parseLong(event.getEventId().toString()));
 
         Boolean canPurchase = databaseSvc.checkAvail(form, event);
 
@@ -69,7 +74,6 @@ public class RegistrationController {
         if (!canPurchase) {
             return "ErrorRegistration";
         }
-
         return "";
     }
 
