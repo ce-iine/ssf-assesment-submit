@@ -22,8 +22,6 @@
         <div>
             <p th:text="${#dates.format(new java.util.Date(event.eventDate))}"></p>
         </div>
-
-        <!--<form method="POST" th:action="@{/book/savecontact}" th:object="${contact}">-->
             <form method="POST" th:action="@{/registration/register}" th:object="${participant}">
 
             <div class ="mb-3"> 

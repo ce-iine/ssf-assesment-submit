@@ -22,7 +22,7 @@ public class EventController {
 	DatabaseService databaseSvc;
 
 	//TODO: Task 5
-	@GetMapping("")
+	@GetMapping("events/listing")
 	public String displayEvents(Model model) throws Exception{
 		List<Event> allEvents = databaseSvc.allEventsFromRedis();
 		model.addAttribute("events", allEvents);

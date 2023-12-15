@@ -27,7 +27,7 @@ public class RegistrationController {
     @Autowired
     DatabaseService databaseSvc;
 
-    @GetMapping("/register/{id}") /// {id}
+    @GetMapping("/events/register/{id}") /// {id}
     public String register(@PathVariable String id, Model model, HttpSession session) throws Exception {
         Event event = databaseSvc.getEvent(Long.parseLong(id));
         session.setAttribute("event", event);

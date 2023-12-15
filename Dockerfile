@@ -29,4 +29,3 @@ EXPOSE ${PORT}
 
 #run the program 
 ENTRYPOINT SERVER_PORT=${PORT} java -jar ./app.jar
-

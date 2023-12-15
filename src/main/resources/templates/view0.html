@@ -19,7 +19,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Event Name</th>
+                    <th>Event ID</th>
                     <th>Event Name</th>
                     <th>Event Size</th>
                     <th>Event Date</th>
@@ -33,7 +33,7 @@
                     <td data-th-text="*{event.eventSize}"></td>
                     <td data-th-text="*{#dates.format(new java.util.Date(event.eventDate))}"></td>
                     <td>
-                        <a th:href="@{/register/{id}(id=${event.eventId})}" class = "btn btn-secondary" th:value="${event}">Register</a>
+                        <a th:href="@{/events/register/{id}(id=${event.eventId})}" class = "btn btn-secondary" th:value="${event}">Register</a>
                     </td>
                 </tr>
             </tbody>
